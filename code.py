@@ -1,28 +1,26 @@
-class Subject:
-    total_subjects = 0
-    total_types = set()
-
-    def __init__(self, name, difficult, time):
+class People:
+    def __init__(self, profesion, name, age) -> None:
+        self.profesion = profesion
         self.name = name
-        self.difficult = difficult
-        self.time = time
-        Subject.total_subjects += 1
-        Subject.total_types.add(name)
+        self.age = age
+    
+    def add_one_year(self):
+        self.age += 1
+        return f" This {self.profesion} has exiriense 1 year"
+
+    @staticmethod
+    def call_people():
+        return "Helpers"
 
 
-data = [("math", 4, 15), ("chemistry", 3, 13), ("physics", 4, 14)]
+first = People("Teacher", "Andriy", 23)
+second = People("Student", "Pavlo", 17)
+third =  People("Principal", "Oksana", 43)
 
 
-subjects_list = []
-for name, difficult, time in data:
-    obj = Subject(name, difficult, time)
-    subjects_list.append(obj)
+print(f"Hello {third.name}, and you are a {third.profesion}, if you need a help, you can call {first.call_people()}, or use class metode {People.call_people()} and also, don't forget about {first.name}, he is a profesional {first.profesion}")
 
-
-print(f"Counter of subjects: {Subject.total_subjects}")
-print(f"Their type: {Subject.total_types}")
-
-
+print(f"Hello {second.name}, and this is your first day at college, your {first.profesion} is {first.name} be patient and calm")
 
 
 
