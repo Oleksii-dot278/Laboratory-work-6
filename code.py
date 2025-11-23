@@ -1,27 +1,38 @@
 class People:
-    total_csv = int(0)
-    total_objects = int(0)
     def __init__(self, profesion, name, age) -> None:
         self.profesion = profesion
         self.name = name
         self.age = age
-        People.total_objects += 1
-
-    @classmethod
-    def from_csv(cls, csv_data:str):
-        cls.total_csv += 1
-        profesion, name, age = csv_data.split(",")
-        return cls(profesion, name, age)
+        self._secret_phrase = "private atribute"
+        self.__secret_strong = "    You can't call it from outside"
     
-    def is_name_capitalized(self):
-        return self.name[0].isupper()
+    @property
+    def secret_phrase(self):
+        return f"We got this from property: {self._secret_phrase}"
+    
+    @property
+    def secret_strong(self):
+        return f"We got it from properties: {self.__secret_strong}"
+
+    def _secret_methid(self):
+        return "private metod, don't touch him"
+
+    def __do_not_touch_it(self):
+        return "Can't call from outside"
+    
 
 
-first = People.from_csv("Teacher,Andriy,23")
-second = People("Student", "pavlo", 17)
+first = People("Principal", "oksana", 43)
+second = People("Teacher", "Andriy", 23)
 
-print(f"{first.name}, if this name capitalized? {first.is_name_capitalized()}")
-print(f"{second.name} if this name Capitalized? {second.is_name_capitalized()}")
+first._secret_phrase = "Changed private atribute"  
+
+
+print(second._secret_phrase)
+
+print(second._People__secret_strong)
+
+
 
 
 
